@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 
 def about(request):
     context = {
-        'page_title': 'About No Essay'
+        'page_title': 'About Scholar Hippo'
     }
     return render_to_response('about.html', context)
 
