@@ -1,4 +1,4 @@
-scholarhippo
-============
+No Essay
+=======
 
-mobile scholarship search
+scholarship search engine

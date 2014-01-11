@@ -1,0 +1,11 @@
+<script>
+    var ne = {};
+    ne.keyword = '{{ search_request.keyword }}';
+    ne.state = '{{ search_request.location }}';
+    ne.no_essay_required = '{{ search_request.no_essay_required }}';
+    ne.deadline = '{{ search_request.deadline }}';
+    ne.ethnicity_restriction = '{{ search_request.ethnicity_restriction }}';
+    ne.gender_restriction = '{{ search_request.gender_restriction }}';
+</script>
+
+{% include 'google_analytics_fragment.html' %}

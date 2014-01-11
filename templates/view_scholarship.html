@@ -1,0 +1,53 @@
+{% extends "navshell.html" %}
+{% load static from staticfiles %}
+{% load app_filters %}
+{% block content %}
+    {% if environment == 'dev' %}
+        <script src="{% static "js/viewschol.js" %}"></script>
+    {% else %}
+        <script src="{% static "js/viewschol.min.js"%}"></script>
+    {% endif %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="content-block span9">
+            {% if user.is_superuser %}
+                <div>
+                    <a href="/admin/search/scholarship/{{ scholarship_model.pk }}/">
+                        Edit
+                    </a>
+                </div>
+            {% endif %}
+            <h2>{{ scholarship_model.title }}</h2>
+
+            <div>
+                <span class="organization">{{ scholarship_model.organization }}</span>
+
+            </div>
+            <div>
+                {% if scholarship_model.state_restriction %}
+                    <span class="light-text">{{ scholarship_model.state_restriction | pretty_state }}</span>
+                    -
+                {% endif %}
+                <span>Deadline: {{ scholarship_model.deadline }}</span>
+
+            </div>
+            <div class="light-text">{{ scholarship_model.third_party_url }}</div>
+            <a id="apply-now" href="{{ scholarship_model.third_party_url }}" rel="nofollow" data-scholkey="{{ scholarship_key }}">
+                <button class="btn btn-primary apply-button">Apply now</button>
+            </a>
+
+            <div class="description-container">
+                {{ scholarship_model.description | linebreaks }}
+            </div>
+            {% if scholarship_model.additional_restriction %}
+                <h4>Additional Restrictions</h4>
+                <div>
+                    {{ scholarship_model.additional_restriction | linebreaks }}
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

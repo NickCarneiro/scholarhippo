@@ -1,0 +1,7 @@
+import sys
+globals().update(vars(sys.modules['noessay.settings']))
+
+PROJECT_ROOT = '/home/burt/development/ne'
+TEMPLATE_DIRS = ('{0}/templates'.format(PROJECT_ROOT),)
+LOGGING['handlers']['file']['filename'] = '/var/log/noessay-dev.log'
+DEBUG = True

@@ -1,0 +1,88 @@
+body {
+    background: url(/static/img/gray_jean.png) repeat;
+
+}
+
+input.what-input {
+    display: inline-block;
+    height: 30px;
+    font-size: 20px;
+    width: 230px;
+
+}
+
+.where-label {
+    display: inline-block;
+}
+
+#home-search-button {
+    margin: 0 auto;
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 10px;
+    width: 200px;
+    display: block;
+
+}
+
+#home-search-controls {
+    margin: 0px auto;
+    display: inline-block;
+}
+
+.input-container {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+}
+
+.site-title {
+    font-size: 50px;
+}
+
+#logo-container {
+    margin: 20% 0px 20px 0px;
+}
+
+#location-combobox-container {
+}
+
+#location-combobox-container .select2-container .select2-choice {
+    height: 36px;
+    font-size: 18px;
+    width: 230px;
+}
+
+#location-combobox-container .select2-choice > span {
+    margin-top: 4px;
+}
+
+.hint {
+    color: #777;
+}
+
+.input-container input {
+    margin-bottom: 6px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.left-text {
+  text-align: left;
+}
+
+#what-container {
+  margin-right: 10px;
+}
+
+#scholarship-count {
+  margin-top: 15px;
+  color: #777;
+
+}
