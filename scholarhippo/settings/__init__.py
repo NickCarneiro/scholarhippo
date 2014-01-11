@@ -56,7 +56,7 @@ STATICFILES_FINDERS = (
     #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-ROOT_URLCONF = 'noessay.urls'
+ROOT_URLCONF = 'scholarhippo.urls'
 
 
 
@@ -104,8 +104,8 @@ ES_INDEX = 'noessay-prod'
 SCHOLARSHIP_TYPE = 'scholarship'
 
 ALLOWED_HOSTS = [
-    'noessay.com',
-    '.noessay.com',
+    'scholarhippo.com',
+    '.scholarhippo.com',
     ]
 
 LOGGING = {
@@ -125,7 +125,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': '/var/log/noessay-prod.log',
+            'filename': '/var/log/scholarhippo-prod.log',
             },
         'console': {
             'level': 'DEBUG',
@@ -148,7 +148,7 @@ LOGGING = {
 }
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'noessay.wsgi.application'
+WSGI_APPLICATION = 'scholarhippo.wsgi.application'
 # DEBUG = False
 
 ES_INDEX = 'noessay-dev'

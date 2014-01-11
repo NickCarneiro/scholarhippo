@@ -4,7 +4,7 @@ from mixpanel import Mixpanel
 mp = Mixpanel('752f301471ad54cb0cc0c8ce77f200da')
 
 keywords = ['no essay scholarships']
-our_domain = 'http://noessay.com'
+our_domain = 'http://scholarhippo.com'
 
 for keyword in keywords:
     results = google.search(keyword, stop=50)

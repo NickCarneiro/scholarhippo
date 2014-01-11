@@ -2,13 +2,13 @@
 # This script coeps them all into elasticsearch
 import os
 import sys
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "noessay.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "scholarhippo.settings")
 
 from pyes import *
 from search.models import *
 from search.elasticsearch_fields import EsFields as es
 
-conn = ES('noessay.com:9200')
+conn = ES('scholarhippo.com:9200')
 DEV_INDEX = 'noessay-dev'
 PROD_INDEX = 'noessay-prod'
 SCHOLARSHIP_TYPE = 'scholarship'

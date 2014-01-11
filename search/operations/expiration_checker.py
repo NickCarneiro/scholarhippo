@@ -2,7 +2,7 @@
 import os
 import requests
 from requests.exceptions import *
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "noessay.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "scholarhippo.settings")
 
 from search.models import *
 

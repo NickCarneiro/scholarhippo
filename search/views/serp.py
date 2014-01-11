@@ -1,6 +1,6 @@
 from django.http import HttpResponseNotFound
 from django.shortcuts import render_to_response
-from noessay.settings import ES_INDEX
+from scholarhippo.settings import ES_INDEX
 from search import request_utils
 from search.search_request import SearchRequest
 from search.serp_result import SerpResult
@@ -10,7 +10,7 @@ from search.request_utils import *
 from search.elasticsearch_fields import EsFields as es
 from django.conf import settings
 
-ELASTICSEARCH_URL = 'noessay.com:9200'
+ELASTICSEARCH_URL = 'scholarhippo.com:9200'
 DESCRIPTION_LENGTH = 300
 RESULTS_PER_PAGE = 10
 
@@ -91,7 +91,7 @@ def serp(request):
         title_location = 'the United States'
     else:
         title_location = location
-    page_title = '{} scholarships in {} | NoEssay.com'.format(keyword, title_location)
+    page_title = '{} scholarships in {} | ScholarHippo.com'.format(keyword, title_location)
     return render_to_response('serp.html',
                               {
                                   'scholarship_list': scholarships,
@@ -169,7 +169,7 @@ def get_meta_description(total_result_count, query, location):
     if location and location != "US":
         meta_description += " found in " + request_utils.states_codes_to_names[location]
 
-    meta_description += " on NoEssay.com."
+    meta_description += " on ScholarHippo.com."
 
     return meta_description
 

@@ -1,15 +1,15 @@
-bind = "127.0.0.1:8094"
+bind = "127.0.0.1:8100"
 daemon = False
 debug = True
 workers = 1
-logfile = "/var/log/noessay-gunicorn.log"
+logfile = "/var/log/scholarhippo-gunicorn.log"
 loglevel = "info"
-procname = 'noessay_prod'
-pythonpath = "/var/www/noessay_prod"
+procname = 'scholarhippo_prod'
+pythonpath = "/var/www/scholarhippo_prod"
 import os
-os.environ['DJANGO_SETTINGS_MODULE'] = 'noessay.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'scholarhippo.settings'
 import sys
-sys.path.append("/var/www/ne_prod")
+sys.path.append("/var/www/scholarhippo_prod")
 def when_ready(server):
     from django.core.management import call_command
     call_command('validate')

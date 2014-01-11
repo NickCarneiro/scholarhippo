@@ -2,7 +2,7 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://noessay.com</loc>
+        <loc>http://scholarhippo.com</loc>
     </url>
     {% for page in pages %}
     <url>
@@ -11,7 +11,7 @@
     </url>
     {% endfor %}
     <url>
-        <loc>http://noessay.com/no-essay-scholarships</loc>
+        <loc>http://scholarhippo.com/no-essay-scholarships</loc>
         <changefreq>daily</changefreq>
     </url>
 
