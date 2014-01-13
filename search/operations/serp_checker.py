@@ -1,7 +1,7 @@
 import google
 from mixpanel import Mixpanel
 
-mp = Mixpanel('752f301471ad54cb0cc0c8ce77f200da')
+mp = Mixpanel('2871f3b0cb686b7f9fff1ba66d042817')
 
 keywords = ['no essay scholarships']
 our_domain = 'http://scholarhippo.com'

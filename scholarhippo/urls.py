@@ -31,6 +31,8 @@ urlpatterns = patterns('',
     url(r'^check', 'search.views.check_for_scholarship', name='check_for_scholarship'),
     url(r'^aggregation', 'search.views.aggregation', name='aggregation'),
 
+    url(r'^helper', 'helper.views.signup', name='helper'),
+
 
 
 
