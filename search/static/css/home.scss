@@ -41,7 +41,7 @@ input.what-input {
 }
 
 #logo-container {
-    margin: 20% 0px 20px 0px;
+    margin: 10px 0px 20px 0px;
 }
 
 #location-combobox-container {
@@ -85,4 +85,9 @@ input.what-input {
   margin-top: 15px;
   color: #777;
 
+}
+
+#navshell-logo-container {
+  display: inline-block;
+  float: left;
 }

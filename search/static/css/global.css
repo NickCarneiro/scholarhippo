@@ -31,7 +31,7 @@ input.what-input {
   font-size: 50px; }
 
 #logo-container {
-  margin: 20% 0px 20px 0px; }
+  margin: 10px 0px 20px 0px; }
 
 #location-combobox-container .select2-container .select2-choice {
   height: 36px;
@@ -62,6 +62,10 @@ input.what-input {
 #scholarship-count {
   margin-top: 15px;
   color: #777; }
+
+#navshell-logo-container {
+  display: inline-block;
+  float: left; }
 
 #serp-container {
   background: #fff;
@@ -172,6 +176,13 @@ em {
 
 #site-title .title-link {
   color: #333333; }
+
+.title-link > h1 {
+  font-size: 30px; }
+
+#logo-img {
+  height: 90px;
+  width: 90px; }
 
 .content-block {
   background: #fff;

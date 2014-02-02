@@ -34,14 +34,20 @@ mixpanel.init("2871f3b0cb686b7f9fff1ba66d042817");</script><!-- end Mixpanel -->
 <body>
 <div id="navshell-header-bar">
     <div id="navshell-header-padding">
+        <div id="navshell-logo-container">
+            <img id="logo-img" src="{% static "img/scholarhippo_100.png" %}">
+        </div>
         <div id="navshell-logo">
+
             <div id="site-title">
+
                 <a class="title-link" href="/">
                     <h1 class="block">Scholar Hippo</h1>
                 </a>
             </div>
         Comprehensive scholarship search
         </div>
+
             <form action="/search" method="get">
                 <div id="" class="input-container">
                     <label for="keyword-input">What</label>
