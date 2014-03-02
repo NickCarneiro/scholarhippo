@@ -32,6 +32,7 @@ urlpatterns = patterns('',
     url(r'^aggregation', 'search.views.aggregation', name='aggregation'),
 
     url(r'^helper', 'helper.views.signup', name='helper'),
+    url(r'^version', 'search.views.version', name='version'),
 
 
 
