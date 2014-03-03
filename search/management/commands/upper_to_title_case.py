@@ -15,11 +15,12 @@ class Command(BaseCommand):
                 title_case_title = scholarship.title.title()
                 print title_case_title
                 scholarship.title = title_case_title
-                # remove 'Scholarships for College'
-                if ' - Scholarships for College' in scholarship.title:
-                    print 'removing  - Scholarships for College'
-                    scholarship.title = scholarship.title.replace(' - Scholarships for College', '')
                 scholarship.save()
                 upper_count += 1
+                # remove 'Scholarships for College'
+            elif ' - Scholarships for College' in scholarship.title:
+                print 'removing  - Scholarships for College'
+                scholarship.title = scholarship.title.replace(' - Scholarships for College', '')
+                scholarship.save()
             i += 1
             print '{} / {} uppers: {}'.format(i, len(scholarships), upper_count)
