@@ -37,12 +37,12 @@
             </a>
 
             <div class="description-container">
-                {{ scholarship_model.description | linebreaks }}
+                {{ description | safe}}
             </div>
-            {% if scholarship_model.additional_restriction %}
+            {% if additional_restriction %}
                 <h4>Additional Restrictions</h4>
                 <div>
-                    {{ scholarship_model.additional_restriction | linebreaks }}
+                    {{ additional_restriction | safe }}
                 </div>
             {% endif %}
             </div>

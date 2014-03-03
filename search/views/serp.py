@@ -9,6 +9,7 @@ from search.models import *
 from search.request_utils import *
 from search.elasticsearch_fields import EsFields as es
 from django.conf import settings
+from HTMLParser import HTMLParser
 
 ELASTICSEARCH_URL = 'scholarhippo.com:9200'
 DESCRIPTION_LENGTH = 300
@@ -72,7 +73,9 @@ def serp(request):
     for schol in results:
         sid = schol.django_id
         if schol._meta.highlight:
-            schol.description = schol._meta.highlight['description'][0]
+
+            schol.description = strip_non_em_tags(schol._meta.highlight['description'][0])
+
         else:
             schol.description = description_to_snippet(schol.description)
         sk = request_utils.encrypt_sid(str(sid))
@@ -115,8 +118,38 @@ def serp(request):
 
 
 def description_to_snippet(desc):
-    return desc[:DESCRIPTION_LENGTH].rsplit(' ', 1)[0] + '...'
+    no_html = strip_tags(desc)
+    return no_html[:DESCRIPTION_LENGTH].rsplit(' ', 1)[0] + '...'
 
+
+
+class MLStripper(HTMLParser):
+    def __init__(self):
+        self.reset()
+        self.fed = []
+    def handle_data(self, d):
+        self.fed.append(d)
+    def get_data(self):
+        return ''.join(self.fed)
+
+def strip_tags(html):
+    s = MLStripper()
+    s.feed(html)
+    return s.get_data()
+
+
+def strip_non_em_tags(html):
+    html = html.replace('<div>', '')
+    html = html.replace('</div>', '')
+    html = html.replace('<p>', '')
+    html = html.replace('</p>', '')
+    html = html.replace('<ul>', '')
+    html = html.replace('</ul>', '')
+    html = html.replace('<li>', '')
+    html = html.replace('</li>', '')
+    html = html.replace('<span>', '')
+    html = html.replace('</span>', '')
+    return html
 
 def build_pagination_objects(result_count, start, search_req):
     if result_count == 0:
