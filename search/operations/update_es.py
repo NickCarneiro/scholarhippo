@@ -13,6 +13,10 @@ DEV_INDEX = 'noessay-dev'
 PROD_INDEX = 'noessay-prod'
 SCHOLARSHIP_TYPE = 'scholarship'
 
+x = raw_input('destroy elasticsearch index and rebuild it? (y/n)')
+if x != 'y':
+    print 'aborting'
+    sys.exit()
 if len(sys.argv) >= 2 and sys.argv[1] == 'prod':
     index = PROD_INDEX
 else:
