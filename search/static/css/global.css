@@ -67,6 +67,10 @@ input.what-input {
   display: inline-block;
   float: left; }
 
+#homepage-promo {
+  margin: 10px 0 10px 0;
+  color: #777; }
+
 #serp-container {
   background: #fff;
   box-shadow: -3px 0px 5px #dfdfdf;
