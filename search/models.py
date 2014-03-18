@@ -83,8 +83,19 @@ class Scholarship(models.Model):
     def __unicode__(self):
         return self.title
 
+
+class SubmittedLink(models.Model):
+    third_party_url = models.CharField(max_length=1000)
+    title = models.CharField(max_length=1000)
+    email = models.CharField(max_length=300)
+
+    def __unicode__(self):
+        return self.title
+
+
 # make models available in admin
 admin.site.register(University)
 admin.site.register(Scholarship)
+admin.site.register(SubmittedLink)
 
 

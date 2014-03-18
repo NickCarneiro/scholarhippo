@@ -1,0 +1,27 @@
+{% extends "navshell.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div id="submit-scholarship-form" class="span6 offset3">
+            <div class="backdrop">
+                <h2>
+                    Submit a Scholarship
+                </h2>
+                <label>Scholarship Title</label>
+                <input id="scholarship-title" type="text" />
+
+                <label>URL</label>
+                <input id="scholarship-url" type="text" />
+
+                <label>Your email (optional)</label>
+                <input id="scholarship-email" type="text" />
+                <div>
+                    <button id="scholarship-submit-button" class="btn btn-primary">Send it in!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static "js/submit_scholarship.js" %}"></script>
+{%  endblock %}

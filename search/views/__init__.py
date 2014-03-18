@@ -5,6 +5,7 @@ from home import home
 from error import error
 from view_scholarship import view_scholarship, scholarship_redirect
 from static_pages import about, legal
+from submit_scholarship import submit_scholarship
 from sitemap import sitemap
 from version import version
 from url_checker import check_for_scholarship, aggregation
