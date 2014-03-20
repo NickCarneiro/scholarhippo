@@ -205,6 +205,9 @@ em {
 .apply-button {
   margin: 10px 0 10px; }
 
+.bold {
+  font-weight: bold; }
+
 .backdrop {
   background: #fff;
   box-shadow: -3px 0px 5px #dfdfdf;

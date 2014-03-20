@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.utils.html import linebreaks
 from search import request_utils
 from search.models import Scholarship
+from scholarhippo import settings
 
 
 def scholarship_redirect(request):
@@ -31,11 +32,13 @@ def view_scholarship(request, scholarship_key):
         additional_restriction = scholarship.additional_restriction
     else:
         additional_restriction = linebreaks(scholarship.additional_restriction)
+
     context = {'scholarship_model': scholarship,
                'scholarship_key': scholarship_key,
                'page_title': scholarship.title,
                'description': description,
-               'additional_restriction': additional_restriction
+               'additional_restriction': additional_restriction,
+               'environment': settings.ENVIRONMENT
     }
     return render_to_response('view_scholarship.html',
                               context,

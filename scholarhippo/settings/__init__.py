@@ -75,7 +75,8 @@ INSTALLED_APPS = (
     'search',
     'helper',
     'south',
-    'raven.contrib.django.raven_compat'
+    'raven.contrib.django.raven_compat',
+    'report'
 )
 
 MIDDLEWARE_CLASSES = (
