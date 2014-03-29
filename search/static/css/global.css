@@ -191,7 +191,9 @@ em {
 .content-block {
   background: #fff;
   margin: 0;
-  padding: 15px; }
+  padding: 15px;
+  max-width: 1000px;
+}
 
 .organization {
   font-size: 20px; }

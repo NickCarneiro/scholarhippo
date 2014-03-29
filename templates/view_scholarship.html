@@ -11,8 +11,8 @@
         <script src="{% static "js/viewschol.min.js"%}"></script>
     {% endif %}
     <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="content-block span9">
+        <div>
+            <div class="content-block">
             {% if user.is_superuser %}
                 <div>
                     <a href="/admin/search/scholarship/{{ scholarship_model.pk }}/">
