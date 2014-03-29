@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Count
 from django.http import HttpResponse, HttpResponseRedirect
 import json
@@ -35,7 +36,8 @@ def get_client_ip(request):
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
-
+@login_required
+@permission_required('is_superuser')
 def view_reports(req):
     reports = Report.objects.values('scholarship')\
         .annotate(scholarship_count=Count('scholarship'))\
