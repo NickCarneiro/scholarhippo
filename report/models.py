@@ -13,3 +13,5 @@ class Report(TimeStampedModel):
 
     def __unicode__(self):
         return '{} -- {}'.format(self.created, self.problem)
+
+admin.site.register(Report)
