@@ -1,0 +1,11 @@
+<h1>Reports</h1>
+        <table>
+            <tr><td>Report count</td> <td>Title</td></tr>
+{% for report in reports %}
+        <tr><td>{{ report.scholarship_count }}</td>
+            <td>
+                <a href="/scholarship/{{ report.scholarship_key}}">{{ report.scholarship.title }}</a>
+            </td>
+        </tr>
+{% endfor %}
+        </table>

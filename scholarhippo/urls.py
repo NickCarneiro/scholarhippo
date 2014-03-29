@@ -36,6 +36,4 @@ urlpatterns = patterns('',
     url(r'^version', 'search.views.version', name='version'),
     url(r'^report', include('report.urls')),
 
-
-
 )

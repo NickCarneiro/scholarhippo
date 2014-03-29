@@ -1,9 +1,11 @@
+from django.db.models import Count
 from django.http import HttpResponse, HttpResponseRedirect
 import json
+from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from search.models import Scholarship
 from report.models import Report
-from request_utils import decrypt_sk
+from request_utils import decrypt_sk, encrypt_sid
 
 
 @csrf_exempt
@@ -32,3 +34,14 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
+
+def view_reports(req):
+    reports = Report.objects.values('scholarship')\
+        .annotate(scholarship_count=Count('scholarship'))\
+        .order_by('-scholarship_count')
+    for report in reports:
+        report['scholarship'] = Scholarship.objects.get(id=report['scholarship'])
+        report['scholarship_key'] = encrypt_sid(str(report['scholarship'].id))
+    print reports
+    return render_to_response('report/reports.html', {'reports': reports})
