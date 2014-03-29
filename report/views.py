@@ -1,7 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
 import json
 from django.views.decorators.csrf import csrf_exempt
+from search.models import Scholarship
 from report.models import Report
+from request_utils import decrypt_sk
+
 
 @csrf_exempt
 def save_report(req):
@@ -15,6 +18,9 @@ def save_report(req):
     report.problem = problem
     report.explanation = explanation
     report.ip_address = get_client_ip(req)
+    scholarship_id = decrypt_sk(form['sk'])
+    scholarship = Scholarship.objects.get(id=scholarship_id)
+    report.scholarship = scholarship
     report.save()
     return HttpResponse('{"msg": "thanks"}', content_type='application/json')
 

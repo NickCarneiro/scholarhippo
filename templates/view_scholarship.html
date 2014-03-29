@@ -2,6 +2,9 @@
 {% load static from staticfiles %}
 {% load app_filters %}
 {% block content %}
+        <script>
+            window['sk'] = '{{ scholarship_key }}';
+        </script>
     {% if environment == 'dev' %}
         <script src="{% static "js/viewschol.js" %}"></script>
     {% else %}

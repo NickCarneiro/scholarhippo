@@ -39,7 +39,8 @@ function submitReport() {
     var payload = {
         problem: problem,
         csrfToken: csrfToken,
-        explanation: explanation
+        explanation: explanation,
+        sk: window['sk']
     };
     var options = {
         type: 'post',
