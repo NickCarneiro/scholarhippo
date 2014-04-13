@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from search.models import Scholarship
 from report.models import Report
-from request_utils import decrypt_sk, encrypt_sid
+from search.request_utils import decrypt_sk, encrypt_sid
 
 
 @csrf_exempt
