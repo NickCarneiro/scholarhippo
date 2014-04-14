@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from mixpanel import Mixpanel
 from search.models import SubmittedLink
+from raven.contrib.django.raven_compat.models import client
 
 @csrf_exempt
 def submit_scholarship(req):
@@ -22,5 +23,6 @@ def submit_scholarship(req):
         mp.track(0, 'submission', {
             'title': payload['title']
         })
+        client.captureMessage("New scholarship submitted.", title=payload['title'])
         return HttpResponse(json.dumps({'msg': 'thanks dawg'}))
 
