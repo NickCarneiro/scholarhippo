@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from search.models import Scholarship
 from report.models import Report
 from search.request_utils import decrypt_sk, encrypt_sid
+from raven.contrib.django.raven_compat.models import client
 
 
 @csrf_exempt
@@ -25,6 +26,10 @@ def save_report(req):
     scholarship = Scholarship.objects.get(id=scholarship_id)
     report.scholarship = scholarship
     report.save()
+    # tell sentry we got a report
+
+    client.captureMessage("Scholarship problem reported.", problem=problem, explanation=explanation)
+
     return HttpResponse('{"msg": "thanks"}', content_type='application/json')
 
 

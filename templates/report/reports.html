@@ -2,7 +2,7 @@
         <table>
             <tr><td>Report count</td> <td>Title</td></tr>
 {% for report in reports %}
-        <tr><td>{{ report.scholarship_count }}</td>
+        <tr><td><a href="/admin/report/report/">{{ report.scholarship_count }}</a></td>
             <td>
                 <a href="/scholarship/{{ report.scholarship_key}}">{{ report.scholarship.title }}</a>
             </td>
