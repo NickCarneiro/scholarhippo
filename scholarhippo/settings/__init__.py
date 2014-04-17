@@ -161,7 +161,7 @@ STATIC_URL = '/static/'
 SECRET_KEY = 'oh god I did not know we needed this!'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
-LOGIN_REDIRECT_URL = '/admin'
+LOGIN_URL = '/admin'
 
 try:
     from .local import *
