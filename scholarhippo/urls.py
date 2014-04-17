@@ -35,5 +35,6 @@ urlpatterns = patterns('',
     url(r'^helper', 'helper.views.signup', name='helper'),
     url(r'^version', 'search.views.version', name='version'),
     url(r'^report', include('report.urls')),
+    url(r'^private/aggcentral', include('aggcentral.urls')),
 
 )

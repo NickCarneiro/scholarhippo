@@ -76,7 +76,8 @@ INSTALLED_APPS = (
     'helper',
     'south',
     'raven.contrib.django.raven_compat',
-    'report'
+    'report',
+    'aggcentral'
 )
 
 MIDDLEWARE_CLASSES = (

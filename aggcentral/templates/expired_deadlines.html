@@ -1,0 +1,52 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+    <title>expired deadlines</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" />
+    <link rel="stylesheet" href="{% static "css/expired_deadlines.css" %}" />
+</head>
+<body>
+
+<table>
+    {% for scholarship in scholarships %}
+    <tr>
+        <td>
+            <a href="{{ scholarship.third_party_url }}"  target="_blank">
+            {{ scholarship.title }}
+            </a>
+        </td>
+        <td>
+            {{ scholarship.deadline }}
+        </td>
+        <td>
+            {{ scholarship.deadline2 }}
+        </td>
+        <td>
+            {{ scholarship.deadline3 }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="pagination">
+    <span class="step-links">
+        {% if scholarships.has_previous %}
+            <a href="?page={{ scholarships.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ scholarships.number }} of {{ scholarships.paginator.num_pages }}.
+        </span>
+
+        {% if scholarships.has_next %}
+            <a href="?page={{ scholarships.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+    <span> {{ result_count }} total results</span>
+</div>
+<script src="{% static "js/jquery.js" %}"></script>
+<script src="{% static "js/expired_deadlines.js" %}"></script>
+</body>
+</html>
