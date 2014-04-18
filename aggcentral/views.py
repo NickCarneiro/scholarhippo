@@ -65,3 +65,8 @@ def deadline(req):
     setattr(scholarship, deadline_field_name, new_deadline)
     scholarship.save()
     return HttpResponse(json.dumps({'msg': 'ok', 'scholarshipId': scholarship_id}), content_type='application/json')
+
+@login_required
+@permission_required('is_superuser')
+def home(req):
+    return render(req, 'aggcentral.html')
