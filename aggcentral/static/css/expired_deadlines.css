@@ -7,5 +7,11 @@
 }
 
 td {
-    padding: 2px 5px 2px 5px;
+    padding: 5px 5px 5px 5px;
+}
+
+td > .deadline-input {
+    width: 75px;
+    margin-top: 0;
+    margin-bottom: 0;
 }

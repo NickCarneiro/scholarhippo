@@ -36,10 +36,32 @@ def edit(req):
 @permission_required('is_superuser')
 @csrf_exempt
 def expire(req):
-
+    if req.method != 'POST':
+        return HttpResponse('{"msg": "must be post request"}', content_type='application/json')
     expire_request = json.loads(req.body)
     scholarship_id = expire_request['scholarshipId']
     scholarship = Scholarship.objects.get(pk=scholarship_id)
     scholarship.status = 1
+    scholarship.save()
+    return HttpResponse(json.dumps({'msg': 'ok', 'scholarshipId': scholarship_id}), content_type='application/json')
+
+
+#  updates deadline for specified scholarship
+@login_required
+@permission_required('is_superuser')
+@csrf_exempt
+def deadline(req):
+    if req.method != 'POST':
+        return HttpResponse('{"msg": "must be post request"}', content_type='application/json')
+    deadline_request = json.loads(req.body)
+    deadline_number = deadline_request['deadlineNumber']
+    deadline_number = '' if deadline_number == 1 else str(deadline_number)
+    new_deadline = deadline_request['newDeadline']
+    if new_deadline == '' or new_deadline == 'none':
+        new_deadline = None
+    scholarship_id = deadline_request['scholarshipId']
+    scholarship = Scholarship.objects.get(pk=scholarship_id)
+    deadline_field_name = 'deadline{}'.format(deadline_number)
+    setattr(scholarship, deadline_field_name, new_deadline)
     scholarship.save()
     return HttpResponse(json.dumps({'msg': 'ok', 'scholarshipId': scholarship_id}), content_type='application/json')

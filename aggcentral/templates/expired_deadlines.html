@@ -12,7 +12,7 @@
 
 <table>
     {% for scholarship in scholarships %}
-    <tr class="{% if scholarship.status == 1 %}expired{% endif %}">
+    <tr class="{% if scholarship.status == 1 %}expired{% endif %}" data-scholarship-id="{{ scholarship.id }}">
         <td>
             <a href="{{ scholarship.third_party_url }}"  target="_blank">
             {{ scholarship.title|truncatechars:60 }}
@@ -22,13 +22,13 @@
             <a href="/admin/search/scholarship/{{ scholarship.id }}/" target="_blank">edit</a>
         </td>
         <td>
-            <span class="deadline" data-deadline="1">{{ scholarship.deadline|date:"Y-m-d" }}</span>
+            <span class="deadline" data-deadline="1">{{ scholarship.deadline|date:"Y-m-d"|default:"none" }}</span>
         </td>
         <td>
-            <span class="deadline" data-deadline="2">{{ scholarship.deadline2|date:"Y-m-d" }}</span>
+            <span class="deadline" data-deadline="2">{{ scholarship.deadline2|date:"Y-m-d"|default:"none" }}</span>
         </td>
         <td>
-            <span class="deadline" data-deadline="3">{{ scholarship.deadline3|date:"Y-m-d" }}</span>
+            <span class="deadline" data-deadline="3">{{ scholarship.deadline3|date:"Y-m-d"|default:"none" }}</span>
         </td>
         <td>
             <button class="expire-button" data-scholarship-id="{{ scholarship.id }}">expire</button>
