@@ -1,3 +1,11 @@
 .highlighted {
     background: #ffff8f;
 }
+
+.expired {
+    background: #c9c9c9;
+}
+
+td {
+    padding: 2px 5px 2px 5px;
+}
