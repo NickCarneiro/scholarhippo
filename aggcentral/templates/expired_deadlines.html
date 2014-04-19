@@ -35,7 +35,7 @@
             <span class="deadline" data-deadline="3">{{ scholarship.deadline3|date:"Y-m-d"|default:"none" }}</span>
         </td>
         <td>
-            <button class="expire-button" data-scholarship-id="{{ scholarship.id }}">expire</button>
+            <button class="btn expire-button" data-scholarship-id="{{ scholarship.id }}">{% if scholarship.status == 0%}expire{% else %}unexpire{% endif %}</button>
         </td>
     </tr>
     {% endfor %}

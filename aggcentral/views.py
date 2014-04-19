@@ -46,9 +46,14 @@ def expire(req):
     expire_request = json.loads(req.body)
     scholarship_id = expire_request['scholarshipId']
     scholarship = Scholarship.objects.get(pk=scholarship_id)
-    scholarship.status = 1
+    if scholarship.status == 1:
+        scholarship.status = 0
+    else:
+        scholarship.status = 1
     scholarship.save()
-    return HttpResponse(json.dumps({'msg': 'ok', 'scholarshipId': scholarship_id}), content_type='application/json')
+    return HttpResponse(json.dumps({'msg': 'ok',
+                                    'scholarshipId': scholarship_id,
+                                    'status': scholarship.status}), content_type='application/json')
 
 
 #  updates deadline for specified scholarship

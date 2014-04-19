@@ -1,7 +1,3 @@
-.highlighted {
-    background: #ffff8f;
-}
-
 .expired {
     background: #c9c9c9;
 }
@@ -11,7 +7,6 @@ td {
 }
 
 td > .deadline-input {
-    width: 75px;
     margin-top: 0;
     margin-bottom: 0;
 }

@@ -1,10 +1,5 @@
 $(function() {
 
-$('tr:first-child').on('click', function() {
-    $('tr').removeClass('highlighted');
-    $(this).addClass('highlighted');
-});
-
 $('.expire-button').on('click', function() {
     var scholarshipId = $(this).data('scholarship-id');
     var settings = {
@@ -12,14 +7,24 @@ $('.expire-button').on('click', function() {
         context: this,
         data: JSON.stringify({'scholarshipId': scholarshipId}),
         success: function(res) {
-            // delete the row
+            $(this).prop('disabled', false);
             $(this).parent().parent().addClass('expired');
+            var buttonText = res.status == 0 ? 'expire' : 'unexpire';
+            $(this).text(buttonText)
+            if (res.status == 0) {
+                $(this).parent().parent().removeClass('expired');
+            } else {
+                $(this).parent().parent().addClass('expired');
+            }
 
         },
         error: function(e) {
+            $(this).prop('disabled', false);
+            $(this).parent().css('background', '#C95D5D');
             console.log(e);
         }
     };
+    $(this).prop('disabled', true);
     $.ajax('/private/aggcentral/expire', settings)
 });
 
