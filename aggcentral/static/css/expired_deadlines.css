@@ -15,3 +15,11 @@ td > .deadline-input {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.not-modified {
+    background: #fffac5;
+}
+
+tr {
+    background: #c6ffc9;
+}

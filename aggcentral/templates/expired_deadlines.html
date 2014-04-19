@@ -13,7 +13,7 @@
 
 <table>
     {% for scholarship in scholarships %}
-    <tr class="{% if scholarship.status == 1 %}expired{% endif %}" data-scholarship-id="{{ scholarship.id }}">
+    <tr class="{% if scholarship.status == 1 %}expired{% elif scholarship.modified < one_week_ago%}not-modified{% endif %}" data-scholarship-id="{{ scholarship.id }}">
         <td>
             <a href="{{ scholarship.third_party_url }}"  target="_blank">
             {{ scholarship.title|truncatechars:60 }}

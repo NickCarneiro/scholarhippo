@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from search.models import Scholarship
+from pytz import timezone
 
 register = template.Library()
 
@@ -27,10 +28,11 @@ def edit(req):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         scholarships = paginator.page(paginator.num_pages)
-
+    one_week_ago = datetime.datetime.now(tz=timezone('US/Central')) - datetime.timedelta(days=7)
     context = {
         'scholarships': scholarships,
-        'result_count': result_count
+        'result_count': result_count,
+        'one_week_ago': one_week_ago
     }
     return render(req, 'expired_deadlines.html', context)
 
