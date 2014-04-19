@@ -1,11 +1,14 @@
 import datetime
 import json
+from django import template
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from search.models import Scholarship
+
+register = template.Library()
 
 @login_required
 @permission_required('is_superuser')
@@ -70,3 +73,4 @@ def deadline(req):
 @permission_required('is_superuser')
 def home(req):
     return render(req, 'aggcentral.html')
+

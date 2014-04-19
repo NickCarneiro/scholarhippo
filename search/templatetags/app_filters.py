@@ -1,6 +1,6 @@
 from django import template
 from datetime import date, timedelta
-from search.request_utils import states_codes_to_names
+from search.request_utils import states_codes_to_names, encrypt_sid
 
 register = template.Library()
 
@@ -10,3 +10,7 @@ def pretty_state(state_code):
         return states_codes_to_names[state_code]
     else:
         raise Exception('Unknown state code {}'.format(state_code))
+
+@register.filter
+def id_to_key(value):
+    return encrypt_sid(str(value))

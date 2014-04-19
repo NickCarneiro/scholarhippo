@@ -1,4 +1,5 @@
 {% load static from staticfiles %}
+{% load app_filters %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,9 @@
         </td>
         <td>
             <a href="/admin/search/scholarship/{{ scholarship.id }}/" target="_blank">edit</a>
+        </td>
+        <td>
+            <a href="/scholarship/{{ scholarship.id|id_to_key }}/" target="_blank">view</a>
         </td>
         <td>
             <span class="deadline" data-deadline="1">{{ scholarship.deadline|date:"Y-m-d"|default:"none" }}</span>
