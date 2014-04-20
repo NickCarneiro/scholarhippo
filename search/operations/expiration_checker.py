@@ -1,5 +1,6 @@
 # check every non-expired scholarhsip to see if it still exists
 import os
+import socket
 import requests
 from requests.exceptions import *
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "scholarhippo.settings")
@@ -37,6 +38,9 @@ def does_scholarship_exist(scholarship):
         return False
     except Timeout:
         print 'Read timeout'
+        return False
+    except socket.error:
+        print 'Socket Error'
         return False
 
     if response.status_code != 200:
