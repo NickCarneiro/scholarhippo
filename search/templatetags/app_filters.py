@@ -1,5 +1,4 @@
 from django import template
-from datetime import date, timedelta
 from search.request_utils import states_codes_to_names, encrypt_sid
 
 register = template.Library()
