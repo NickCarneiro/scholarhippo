@@ -1,4 +1,4 @@
-# check every non-expired scholarhsip to see if it still exists
+# check every non-expired scholarship to see if it still exists
 import os
 import socket
 import requests

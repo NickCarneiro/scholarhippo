@@ -72,6 +72,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'haystack',
     'search',
     'helper',
     'south',
@@ -154,7 +155,6 @@ LOGGING = {
 WSGI_APPLICATION = 'scholarhippo.wsgi.application'
 # DEBUG = False
 
-ES_INDEX = 'noessay-dev'
 ENVIRONMENT = 'dev'
 
 STATIC_URL = '/static/'
@@ -162,6 +162,19 @@ SECRET_KEY = 'oh god I did not know we needed this!'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 LOGIN_URL = '/admin'
+
+# elasticsearch settings
+ES_HOST = 'scholarhippo.com:9200'
+ES_INDEX = 'noessay-dev'
+ES_SCHOLARSHIP_TYPE = 'scholarship'
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://scholarhippo.com:9200/',
+        'INDEX_NAME': 'scholarhippo-prod',
+    },
+}
 
 try:
     from .local import *

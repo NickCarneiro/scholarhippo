@@ -1,17 +1,12 @@
-from django.http import HttpResponseNotFound
 from django.shortcuts import render_to_response
-from scholarhippo.settings import ES_INDEX
+from haystack.query import SearchQuerySet
 from search import request_utils
 from search.search_request import SearchRequest
 from search.serp_result import SerpResult
-from pyes import *
-from search.models import *
 from search.request_utils import *
-from search.elasticsearch_fields import EsFields as es
 from django.conf import settings
 from HTMLParser import HTMLParser
 
-ELASTICSEARCH_URL = 'scholarhippo.com:9200'
 DESCRIPTION_LENGTH = 300
 RESULTS_PER_PAGE = 10
 
@@ -33,53 +28,17 @@ def serp(request):
 
     search_req = SearchRequest(keyword, location, no_essay_required,
         deadline, ethnicity, gender)
-    conn = ES(ELASTICSEARCH_URL)
 
     # got a keyword
     filters = []
 
-    if keyword:
-        query = MultiMatchQuery(text=keyword, fields=[es.title, es.description])
-    else:
-        query = MatchAllQuery()
-
-    # attach a state filter
-    if location is not None and location != 'US':
-        state_filter = TermFilter(es.state_restriction, location)
-        filters.append(state_filter)
-    if no_essay_required:
-        no_essay_filter = TermFilter(es.essay_required, no_essay_required)
-        filters.append(no_essay_filter)
-    if deadline:
-        # logic bomb, just to keep things interesting
-        deadline_filter = RangeFilter(ESRange(es.deadline, deadline, '2100-1-1'))
-        filters.append(deadline_filter)
-    if ethnicity is not None:
-        ethnicity_filter = TermFilter(es.ethnicity_restriction, ethnicity)
-        filters.append(ethnicity_filter)
-    if gender is not None:
-        gender_filter = TermFilter(es.gender_restriction, gender)
-        filters.append(gender_filter)
-    # apply filters if we got any. otherwise run the keyword or empty everything
-    if len(filters) > 0:
-        and_filter = ANDFilter(filters)
-        query = FilteredQuery(query, and_filter)
-
-    search = Search(query, size=RESULTS_PER_PAGE, start=start)
-    search.add_highlight(es.description, fragment_size=300, number_of_fragments=5)
-    results = conn.search(search, indices=ES_INDEX)
-    total_result_count = results.total
+    results = SearchQuerySet().filter(text=keyword, deadline__gte=deadline, ethnicity=ethnicity,
+                                      gender=gender, no_essay_required=no_essay_required)
+    total_result_count = len(results)
     scholarships = []
     for schol in results:
-        sid = schol.django_id
-        if schol._meta.highlight:
-
-            schol.description = strip_non_em_tags(schol._meta.highlight['description'][0])
-
-        else:
-            schol.description = description_to_snippet(schol.description)
-        sk = request_utils.encrypt_sid(str(sid))
-        result = SerpResult(sk, schol)
+        sk = request_utils.encrypt_sid(str(schol.pk))
+        result = SerpResult(sk, schol, to_highlight=keyword)
 
         scholarships.append(result)
     page_links = build_pagination_objects(total_result_count, start, search_req)

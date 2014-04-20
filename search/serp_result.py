@@ -1,9 +1,14 @@
 # encapsulates a Scholarship model, includes metadata such as scholarship_key not found in the model
+from haystack.utils import Highlighter
+
+
 class SerpResult:
-    def __init__(self, scholarship_key=None, scholarship_model=None):
+    def __init__(self, scholarship_key=None, search_result=None, to_highlight=''):
+        scholarship_model = search_result.object
         self.scholarship_key = scholarship_key
-        self.scholarship_model = scholarship_model
-        self.snippet = scholarship_model.description
+        scholarship_model = scholarship_model
+        highlight = Highlighter(to_highlight, max_length=300)
+        self.snippet = highlight.highlight(scholarship_model.description)
         if scholarship_model is not None:
             self.deadline = scholarship_model.deadline
         self.source = scholarship_model.organization
