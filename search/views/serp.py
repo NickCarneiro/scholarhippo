@@ -40,7 +40,7 @@ def serp(request):
     if location and location != 'US':
         query_arguments['state_restriction'] = location
     if no_essay_required:
-        query_arguments['essay_required'] = 'true'
+        query_arguments['essay_required'] = 'false'
     if ethnicity:
         query_arguments['ethnicity_restriction'] = ethnicity
     if gender:
