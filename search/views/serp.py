@@ -34,8 +34,9 @@ def serp(request):
     filters = []
 
     query_arguments = {
-        'content': keyword
     }
+    if keyword:
+        query_arguments['content'] = keyword
     if location and location != 'US':
         query_arguments['state_restriction'] = location
     if no_essay_required:
