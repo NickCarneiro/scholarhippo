@@ -4,7 +4,7 @@ from search.models import Scholarship
 
 class ScholarshipIndex(indexes.SearchIndex, indexes.Indexable):
     text = indexes.CharField(document=True, use_template=True)
-    title = indexes.CharField(model_attr='title')
+    state_restriction = indexes.CharField(model_attr='state_restriction')
     deadline = indexes.DateField(model_attr='deadline', null=True)
     deadline2 = indexes.DateField(model_attr='deadline2', null=True)
     deadline3 = indexes.DateField(model_attr='deadline3', null=True)

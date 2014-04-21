@@ -5,13 +5,13 @@
     {% if result.deadline %}
     <div class="result-details">
         <span class="result-deadline">Deadline: {{ result.deadline|date:'M d, Y' }}</span>
-        {% if result.essay_required %}
+        {% if not result.essay_required %}
             - <span class="accent">No essay required</span>
         {% endif %}
 {#        The integer values for genders are defined in a tuple in models.py#}
-        {% if 'Male' in result.gender_restriction %}
+        {% if result.gender_restriction == 0 %}
             <span class="accent"><img src="/static/img/male.png"></span>
-        {% elif 'Female' in result.gender_restriction %}
+        {% elif result.gender_restriction == 1 %}
             <span class="accent"><img src="/static/img/female.png"></span>
         {% endif %}
     </div>

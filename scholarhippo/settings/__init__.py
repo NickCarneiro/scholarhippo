@@ -102,11 +102,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
 )
 
-
-#elasticsearch settings
-ES_INDEX = 'noessay-prod'
-SCHOLARSHIP_TYPE = 'scholarship'
-
 ALLOWED_HOSTS = [
     'scholarhippo.com',
     '.scholarhippo.com',
@@ -162,11 +157,6 @@ SECRET_KEY = 'oh god I did not know we needed this!'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 LOGIN_URL = '/admin'
-
-# elasticsearch settings
-ES_HOST = 'scholarhippo.com:9200'
-ES_INDEX = 'noessay-dev'
-ES_SCHOLARSHIP_TYPE = 'scholarship'
 
 HAYSTACK_CONNECTIONS = {
     'default': {

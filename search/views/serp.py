@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response
+from haystack.inputs import Exact
 from haystack.query import SearchQuerySet
 from search import request_utils
 from search.search_request import SearchRequest
@@ -32,11 +33,22 @@ def serp(request):
     # got a keyword
     filters = []
 
-    results = SearchQuerySet().filter(text=keyword, deadline__gte=deadline, ethnicity=ethnicity,
-                                      gender=gender, no_essay_required=no_essay_required)
+    query_arguments = {
+        'content': keyword
+    }
+    if location and location != 'US':
+        query_arguments['state_restriction'] = location
+    if no_essay_required:
+        query_arguments['essay_required'] = 'true'
+    if ethnicity:
+        query_arguments['ethnicity_restriction'] = ethnicity
+    if gender:
+        query_arguments['gender_restriction'] = gender
+
+    results = SearchQuerySet().filter(**query_arguments)
     total_result_count = len(results)
     scholarships = []
-    for schol in results:
+    for schol in results[start:start + RESULTS_PER_PAGE]:
         sk = request_utils.encrypt_sid(str(schol.pk))
         result = SerpResult(sk, schol, to_highlight=keyword)
 
