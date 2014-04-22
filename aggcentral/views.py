@@ -89,7 +89,7 @@ def home(req):
 
 
 def get_version_info():
-    process = subprocess.Popen(['git', 'show', '--quiet'], stdout=subprocess.PIPE)
+    process = subprocess.Popen(['git', 'show', '-s'], stdout=subprocess.PIPE)
     git_info, err = process.communicate()
     return git_info
 
