@@ -23,8 +23,9 @@
 
             </div>
             <div>
-                <label for="refine-deadline">Deadline after</label>
-                <input id="refine-deadline" type="text"/>
+                <label class="checkbox" for="refine-deadline">
+                    <input type="checkbox" id="refine-deadline" value="show-passed-deadlines" {% if search_request.show_passed_deadlines %}checked{% endif %}>Show passed deadlines
+                </label>
             </div>
 
         <div>

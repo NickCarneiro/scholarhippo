@@ -6,7 +6,7 @@ function submitRefine() {
     refineForm.l = $locationCombobox.val();
 
     refineForm.ne = $('#refine-no-essay-required').prop('checked');
-    var deadline = $('#refine-deadline').val();
+    var deadline = $('#refine-deadline').prop('checked');
     if (deadline && deadline !== 'None') {
         refineForm.d = deadline;
     }
@@ -22,10 +22,7 @@ function resultClick() {
     mixpanel.track("search#resultclick", loggingParameters);
 }
 $(function() {
-    var $datePicker = $('#refine-deadline').datepicker();
     //make refine form match page state
-    $datePicker.datepicker('option', 'dateFormat', 'yy-mm-dd');
-    $datePicker.val(ne.deadline);
     $('#refine-ethnicity').val(ne.ethnicity_restriction);
     $('#refine-gender').val(ne.gender_restriction);
 

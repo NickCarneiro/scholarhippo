@@ -59,13 +59,13 @@ class SearchRequest:
         'WY': 'Wyoming'
     }
     def __init__(self, keyword="", location="", no_essay_required=False,
-                 deadline=None,
+                 show_passed_deadlines=None,
                  ethnicity_restriction=None,
                  gender_restriction=None):
         self.location = location
         self.keyword = keyword
         self.no_essay_required = no_essay_required
-        self.deadline = deadline
+        self.show_passed_deadlines = show_passed_deadlines
         self.ethnicity_restriction = ethnicity_restriction
         self.gender_restriction = gender_restriction
 
@@ -75,8 +75,8 @@ class SearchRequest:
             url += '&l=' + self.location
         if self.no_essay_required:
             url += '&ne=true'
-        if self.deadline is not None:
-            url += '&d=' + self.deadline
+        if self.show_passed_deadlines is not None:
+            url += '&d=' + str(self.show_passed_deadlines)
         if self.ethnicity_restriction is not None:
             url += '&e=' + str(self.ethnicity_restriction)
         if self.gender_restriction is not None:
