@@ -45,6 +45,8 @@ def serp(request):
         query_arguments['ethnicity_restriction'] = ethnicity
     if gender:
         query_arguments['gender_restriction'] = gender
+    if deadline:
+        query_arguments['deadline__gte'] = deadline
 
     results = SearchQuerySet().filter(**query_arguments)
     total_result_count = len(results)
