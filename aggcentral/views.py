@@ -1,5 +1,6 @@
 import datetime
 import json
+import subprocess
 from django import template
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
@@ -13,7 +14,7 @@ register = template.Library()
 
 @login_required
 @permission_required('is_superuser')
-def edit(req):
+def manage_deadlines(req):
 
     scholarships = Scholarship.objects.filter(deadline__lt=datetime.datetime.now())
     result_count = len(scholarships)
@@ -79,5 +80,16 @@ def deadline(req):
 @login_required
 @permission_required('is_superuser')
 def home(req):
-    return render(req, 'aggcentral.html')
+    version_info = get_version_info()
+    print version_info
+    context = {
+        'git_info': version_info
+    }
+    return render(req, 'aggcentral.html', context)
+
+
+def get_version_info():
+    process = subprocess.Popen(['git', 'show', '--quiet'], stdout=subprocess.PIPE)
+    git_info, err = process.communicate()
+    return git_info
 

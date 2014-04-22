@@ -1,12 +1,44 @@
-<h1>
-Welcome to aggcentral!
-</h1>
-<a href="/private/aggcentral/edit">Expiration and deadline management</a>
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+    <title>Aggcentral</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" />
+</head>
+<body>
 
-<div>
-todo:
-<ul>
-<li>feed monitor</li>
-<li>new feed</li>
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="span4">
+            <h2>Stats</h2>
+            <div>
+                <pre>
+                {{ git_info }}
+                </pre>
+            </div>
+        </div>
+        <div class="span4">
+            <h2>Analytics</h2>
+            <ul>
+                <li><a href="https://www.google.com/analytics/web/?hl=en#report/visitors-overview/a7363929w80127408p82777092/%3Foverview-graphOptions.primaryConcept%3Danalytics.pageviews/">Google Analytics</a></li>
+                <li><a href="https://mixpanel.com/report/339623/events/#events">Mixpanel</a></li>
+                <li><a href="https://www.google.com/webmasters/tools/dashboard?hl=en&siteUrl=http://scholarhippo.com/">Google Webmaster Tools</a></li>
+                <li><a href="https://ssl.bing.com/webmaster/home/dashboard?url=http%3A%2F%2Fscholarhippo.com%2F">Bing Webmaster Tools</a></li>
+            </ul>
+        </div>
+        <div class="span4">
+            <h2>Aggregation</h2>
+            <ul>
+                <li><a href="/private/aggcentral/manage_deadlines">Deadline management</a></li>
+                <li>feed monitor</li>
+                <li>new feed</li>
+            </ul>
+        </div>
+    </div>
 </div>
+
+
+</body>
+</html>
