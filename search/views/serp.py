@@ -24,12 +24,16 @@ def serp(request):
     if start % RESULTS_PER_PAGE != 0:
         start = 0
     no_essay_required = parse_boolean_param(request.GET.get('ne'))
-    show_passed_deadlines = parse_boolean_param(request.GET.get('d'))
+    # hide passed deadlines unless someone explicitly unchecks the box
+    if request.GET.get('d') is None:
+        hide_passed_deadlines = True
+    else:
+        hide_passed_deadlines = parse_boolean_param(request.GET.get('d'))
     ethnicity = parse_int_param(request.GET.get('e'), None)
     gender = parse_int_param(request.GET.get('g'), None)
 
     search_req = SearchRequest(keyword, location, no_essay_required,
-        show_passed_deadlines, ethnicity, gender)
+        hide_passed_deadlines, ethnicity, gender)
 
     # got a keyword
     filters = []
@@ -48,8 +52,8 @@ def serp(request):
         query_arguments['gender_restriction'] = gender
 
     # by default we only show scholarships with upcoming deadlines
-    # if user clicked 'show passed deadlines'
-    if not show_passed_deadlines:
+    # if user clicked 'hide passed deadlines'
+    if hide_passed_deadlines:
         today = datetime.date.today()
         today_str = today.isoformat()
         query_arguments['deadline__gte'] = today_str

@@ -7,9 +7,7 @@ function submitRefine() {
 
     refineForm.ne = $('#refine-no-essay-required').prop('checked');
     var deadline = $('#refine-deadline').prop('checked');
-    if (deadline && deadline !== 'None') {
-        refineForm.d = deadline;
-    }
+    refineForm.d = deadline;
     refineForm.e = $('#refine-ethnicity').val();
     refineForm.g = $('#refine-gender').val();
     var url = $.param(refineForm);
