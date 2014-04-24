@@ -72,16 +72,16 @@ input.what-input {
   color: #777; }
 
 #serp-container {
-  background: #fff;
-  box-shadow: -3px 0px 5px #dfdfdf;
-  padding: 10px;
+  background: white;
   max-width: 600px;
-  min-width: 320px; }
+  min-width: 320px;
+  margin-left: 0;
+  padding-left: 10px; }
 
 #left-col-container {
-  background: #ffffff;
-  padding: 10px;
-  max-width: 260px; }
+  background: white;
+  padding: 10px 0 0 10px;
+  min-width: 300px; }
 
 .result-link {
   color: #12c;
@@ -120,31 +120,31 @@ em {
 #location-combobox-refine-container {
   margin-bottom: 10px; }
 
-@media (max-width: 1037px) {
-  #left-col-container {
-    display: none; } }
 .pagination-arrow {
   font-size: 30px; }
 
 .highlighted {
   font-weight: bold; }
 
-#navshell-search-button {
-  margin-bottom: 10px;
-  margin-left: 20px; }
+.serp-row-fluid {
+  background: white; }
 
-#navshell-header-bar {
-  width: 100%;
-  background: #ffffff;
-  min-height: 90px;
-  box-shadow: 0px 3px 5px #dfdfdf;
-  margin-bottom: 15px; }
+#serp-container-div {
+  margin-top: 10px; }
+
+#refine-form-toggle {
+  height: 30px; }
+
+.refine-checkbox {
+  margin-top: 10px; }
+
+#navshell-search-button {
+  margin: 10px 0 10px 0; }
 
 #navshell-header-padding {
   padding: 10px 0 10px 10px; }
 
 #navshell-logo {
-  float: left;
   width: 250px;
   padding: 0 0 0 10px;
   color: #777; }
@@ -156,20 +156,11 @@ em {
   width: 200px; }
 
 #keyword-input {
-  height: 18px;
-  width: 200px; }
+  height: 18px; }
 
-.input-container {
-  width: 248px;
-  float: left; }
-
-#location-container {
-  float: left;
-  margin-right: 10px;
-  width: 200px; }
-
-#navshell-search-button {
-  margin-top: 24px; }
+#search-form-row .input-container {
+  min-width: 300px;
+  margin-left: 10px; }
 
 #navshell-footer {
   margin-top: 70px;
@@ -184,12 +175,18 @@ em {
 #site-title .title-link {
   color: #333333; }
 
-.title-link > h1 {
+#navshell-logo .title-link > h1 {
   font-size: 30px; }
 
 #logo-img {
   height: 90px;
   width: 90px; }
+
+#navshell-header-bar {
+  background: #fff; }
+
+#search-form-row {
+  background: #fff; }
 
 .content-block {
   background: #fff;

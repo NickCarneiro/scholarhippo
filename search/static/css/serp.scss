@@ -1,21 +1,26 @@
+$primary-background-color: #fff;
+
 #serp-container {
-    background: #fff;
-    box-shadow: -3px 0px 5px #dfdfdf;
-    padding: 10px;
+    background: $primary-background-color;
     max-width: 600px;
     min-width: 320px;
+    margin-left: 0;
+    padding-left: 10px;
 }
 
 #left-col-container {
-    background: #ffffff;
-    padding: 10px;
-    max-width: 260px;
+    background: $primary-background-color;
+    padding: 10px 0 0 10px;
+    min-width: 300px;
 }
+
+#left-col-controls {
+}
+
 .result-link {
     color: #12c;
     font-size: 16px
 }
-
 
 .result-container {
     margin-bottom: 23px;
@@ -59,16 +64,29 @@ em {
     margin-bottom: 10px;
 }
 
-@media (max-width: 1037px) {
-  #left-col-container {
-    display: none;
-  }
-}
-
 .pagination-arrow {
   font-size: 30px;
 }
 
 .highlighted {
   font-weight: bold;
+}
+
+.serp-row-fluid {
+    background: $primary-background-color;
+}
+
+#serp-container-div {
+    margin-top: 10px;
+}
+
+#refine-expand-button {
+}
+
+#refine-form-toggle {
+    height: 30px;
+}
+
+.refine-checkbox {
+    margin-top: 10px;
 }

@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" />
     <link rel="stylesheet" href="{% static "css/global.css" %}" />
     <link rel="stylesheet" href="{% static "css/select2.css" %}" />
+    <link rel="stylesheet" href="{% static "css/jqueryui.css" %}" />
+    <link rel="stylesheet" href="{%  static "css/font-awesome.min.css" %}">
+
+
     <script src="{% static "js/jquery.js" %}"></script>
     <script src="{% static "js/select2.min.js" %}"></script>
     {% if environment == 'dev' %}
@@ -26,13 +30,20 @@
     {% if canonical_url %}
         <link rel="canonical" href="{{ canonical_url }}">
     {% endif %}
+
+
+    <script src="{% static "js/jquery-ui-1.10.1.custom.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js"%}"></script>
+
     <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
         typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);
     b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("2871f3b0cb686b7f9fff1ba66d042817");</script><!-- end Mixpanel -->
 </head>
 <body>
-<div id="navshell-header-bar" class="row-fluid">
+<div class="container-fluid">
+<div id="search-form-row" class="row-fluid">
+<div id="navshell-header-bar" class="span3">
     <div id="navshell-header-padding">
         <div id="navshell-logo-container">
             <img id="logo-img" src="{% static "img/scholarhippo_100.png" %}">
@@ -47,13 +58,16 @@ mixpanel.init("2871f3b0cb686b7f9fff1ba66d042817");</script><!-- end Mixpanel -->
             </div>
         Comprehensive scholarship search
         </div>
+    </div>
+</div>
 
-            <form action="/search" method="get">
-                <div id="" class="input-container">
+        <form action="/search" method="get">
+
+                <div class="span3 input-container">
                     <label for="keyword-input">What</label>
                     <input name="q" class="what-input" type="text" id="keyword-input" value="{{ search_request.keyword }}" />
                 </div>
-                <div id="location-container">
+                <div id="location-container" class="span4 input-container">
                     <label for="location-combobox">Where</label>
                     <select id="location-combobox" name="l">
                         <option value="US">Any state</option>
@@ -110,10 +124,14 @@ mixpanel.init("2871f3b0cb686b7f9fff1ba66d042817");</script><!-- end Mixpanel -->
                         <option value="WY">Wyoming</option>
                     </select>
                 </div>
-                <button id="navshell-search-button" class="inline-block btn" type="submit">Find Scholarships <i class="icon-search"></i></button>
-            </form>
-    </div>
+                <div class="span3 input-container">
+                    <button id="navshell-search-button" class="inline-block btn" type="submit">Find Scholarships <i class="icon-search"></i></button>
+                </div>
+
+        </form>
 </div>
+</div>
+
 
             {% block content %}
             {% endblock %}

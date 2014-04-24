@@ -34,4 +34,8 @@ $(function() {
 
     // ne gets defined in footer_script.html
     mixpanel.track('search', window['ne']);
+    if( !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $('#left-col-controls').collapse('show');
+    }
+
 });
