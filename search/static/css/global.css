@@ -144,7 +144,7 @@ em {
   padding: 10px 0 10px 10px; }
 
 #navshell-logo {
-  width: 250px;
+  min-width: 300px;
   padding: 0 0 0 10px;
   color: #777; }
 
@@ -176,6 +176,10 @@ em {
 
 #navshell-logo .title-link > h1 {
   font-size: 30px; }
+
+#logo-img {
+  float: left;
+  margin-right: 10px; }
 
 #navshell-header-bar {
   background: #fff; }
