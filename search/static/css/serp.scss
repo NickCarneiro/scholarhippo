@@ -4,13 +4,12 @@ $primary-background-color: #fff;
     background: $primary-background-color;
     max-width: 600px;
     min-width: 320px;
-    margin-left: 0;
     padding-left: 10px;
 }
 
 #left-col-container {
     background: $primary-background-color;
-    padding: 10px 0 0 10px;
+    padding: 10px 0 10px 10px;
     min-width: 300px;
 }
 
@@ -72,8 +71,10 @@ em {
   font-weight: bold;
 }
 
-.serp-row-fluid {
-    background: $primary-background-color;
+@media (max-width: 700px) {
+    .serp-row-fluid {
+        background: $primary-background-color;
+    }
 }
 
 #serp-container-div {
@@ -90,3 +91,4 @@ em {
 .refine-checkbox {
     margin-top: 10px;
 }
+

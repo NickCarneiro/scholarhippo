@@ -75,12 +75,11 @@ input.what-input {
   background: white;
   max-width: 600px;
   min-width: 320px;
-  margin-left: 0;
   padding-left: 10px; }
 
 #left-col-container {
   background: white;
-  padding: 10px 0 0 10px;
+  padding: 10px 0 10px 10px;
   min-width: 300px; }
 
 .result-link {
@@ -126,9 +125,9 @@ em {
 .highlighted {
   font-weight: bold; }
 
-.serp-row-fluid {
-  background: white; }
-
+@media (max-width: 700px) {
+  .serp-row-fluid {
+    background: white; } }
 #serp-container-div {
   margin-top: 10px; }
 
@@ -177,10 +176,6 @@ em {
 
 #navshell-logo .title-link > h1 {
   font-size: 30px; }
-
-#logo-img {
-  height: 90px;
-  width: 90px; }
 
 #navshell-header-bar {
   background: #fff; }
