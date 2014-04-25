@@ -45,7 +45,7 @@ mixpanel.init("2871f3b0cb686b7f9fff1ba66d042817");</script><!-- end Mixpanel -->
 <div id="search-form-row" class="row-fluid">
 <div id="navshell-header-bar" class="span3">
     <div id="navshell-header-padding">
-        <img id="logo-img" src="{% static "img/scholarhippo_100.png" %}">
+        <img id="logo-img" src="{% static "img/scholarhippo_85.png" %}">
         <div id="navshell-logo">
 
             <div id="site-title">
@@ -62,11 +62,11 @@ mixpanel.init("2871f3b0cb686b7f9fff1ba66d042817");</script><!-- end Mixpanel -->
 
         <form action="/search" method="get">
 
-                <div class="span3 input-container">
+                <div id="keyword-container" class="span2 input-container">
                     <label for="keyword-input">What</label>
                     <input name="q" class="what-input" type="text" id="keyword-input" value="{{ search_request.keyword }}" />
                 </div>
-                <div id="location-container" class="span4 input-container">
+                <div id="location-container" class="span2 input-container">
                     <label for="location-combobox">Where</label>
                     <select id="location-combobox" name="l">
                         <option value="US">Any state</option>
@@ -123,7 +123,7 @@ mixpanel.init("2871f3b0cb686b7f9fff1ba66d042817");</script><!-- end Mixpanel -->
                         <option value="WY">Wyoming</option>
                     </select>
                 </div>
-                <div class="span3 input-container">
+                <div id="search-button-column" class="span3 input-container">
                     <button id="navshell-search-button" class="inline-block btn" type="submit">Find Scholarships <i class="icon-search"></i></button>
                 </div>
 

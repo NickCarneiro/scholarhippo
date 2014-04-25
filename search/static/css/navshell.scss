@@ -25,13 +25,34 @@
     height: 18px;
 }
 
-#search-form-row .input-container {
-    min-width: 300px;
-    margin-left: 10px;
+@media(min-width: 700px) {
+
+    #keyword-container {
+        margin: 20px 0 0 -10px;
+    }
+    #location-container {
+        margin: 20px 0 0 0;
+    }
+
+    #search-button-column {
+        margin: 34px 0 0 10px;
+    }
+
+    #keyword-input {
+        width: 200px;
+    }
+}
+
+@media(max-width: 700px) {
+    #search-form-row .input-container {
+        min-width: 300px;
+        margin-left: 10px;
+    }
 }
 
 #navshell-footer {
     margin-top: 70px;
+    margin-bottom: 10px;
     text-align: center;
     width: 100%;
     color: #777;
