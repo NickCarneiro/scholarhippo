@@ -127,7 +127,7 @@
         {% endif %}
         <div id="pagination">
         {% if not is_first_page %}
-            <a href="{{ prev_page_href }}"><i class="icon-circle-arrow-left"></i> Previous</a>
+            <a href="{{ prev_page_href }}"><i class="icon-circle-arrow-left"></i></a>
         {% endif %}
             {#        we've precomputed the pages#}
             {% if result_count > results_per_page %}
@@ -142,7 +142,7 @@
                 {% endfor %}
             {% endif %}
         {% if not is_last_page %}
-            <a href="{{ next_page_href }}">Next <i class="icon-circle-arrow-right"></i></a>
+            <a href="{{ next_page_href }}"><i class="icon-circle-arrow-right"></i></a>
         {% endif %}
         </div>
     </div>
