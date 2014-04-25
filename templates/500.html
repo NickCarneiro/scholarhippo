@@ -1,1 +1,15 @@
-TODO: make 500 error template
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+    <title>Aggcentral</title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}" />
+</head>
+<body>
+<h1>Whoops. The site is temporarily broken. I'm on it.</h1>
+<img id="logo-img" src="{% static "img/sadhippo.png" %}">
+
+</body>
+</html>
